@@ -1,7 +1,7 @@
 /*taille en pixels du player*/
 
 .video-medium {
-  width: 740px;
+  max-width: 80%;
   margin: auto;
 }
 
@@ -20,12 +20,15 @@ body {
 }
 
 
-/**/
+/*couleur de l' option de défilement*/
 
 #controls {
   color: #27F27F;
   font-family: Arial, sans-serif;
 }
+
+
+/*couleur du choix de vitesse de lecture*/
 
 #vitesse {
   color: #27F27F;
