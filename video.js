@@ -2,20 +2,17 @@
 // création des const
 //================================================================================================================//
 const lecteur = document.querySelector('#lecteur'); // stock le lecteur
-const barreVitesse = document.querySelector('#barreVitesse'); // stock le slider
-const vitesse = document.querySelector('#vitesse'); // stock le speed
 const btnPlay = document.querySelector('#btnPlay'); // stock bouton play
 const dureeVideo = lecteur.duration; // stock la durée de la vidéo, la propiété lecteur.duration est fourni
-
 const barreRecherche = document.querySelector('#barreRecherche'); // stock la barre de recherche
-
+const btnPleinEcran = document.querySelector('#btnPleinEcran'); // stock le plein écran
 
 //================================================================================================================//
 // création des events
 //================================================================================================================//
 btnPlay.addEventListener('click', playVideo); // l' event click sur le bouton play appel la fonction playVideo
 btnStop.addEventListener('click', stopVideo);
-barreVitesse.addEventListener('change', ajusteVitesse);
+btnPleinEcran.addEventListener('click', pleinEcran);
 
 lecteur.addEventListener('durationchange', reglageBarreRecherche);
 lecteur.addEventListener('canplay', reglageLecteur);
@@ -23,7 +20,6 @@ lecteur.addEventListener('ended', clean);
 
 barreRecherche.addEventListener('change', chercherVideo);
 barreRecherche.addEventListener('timeupdate', majUI);
-
 
 //================================================================================================================//
 // création des fonctions
@@ -73,10 +69,14 @@ function stopVideo(evt) {
   lecteur.currentTime = 0; // remet le lecteur à 0
 }
 
-// réagit au changement sur le slider
-function ajusteVitesse(evt) {
-  console.log(evt.target.value);
-  const vitesseActuelleLecture = evt.target.value;
-  vitesse.innerHTML = `${vitesseActuelleLecture}X`;
-  lecteur.playbackRate = vitesseActuelleLecture;
+// // fonction plein écran, https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Using_full_screen_mode
+function pleinEcran(evt) {
+  const pleinEcranConst = document.getElementById("lecteur");
+  if (pleinEcranConst.requestFullscreen) {
+    pleinEcranConst.requestFullscreen();
+  } else if (pleinEcranConst.mozRequestFullScreen) {
+    pleinEcranConst.mozRequestFullScreen();
+  } else if (pleinEcranConst.webkitRequestFullscreen) {
+    pleinEcranConst.webkitRequestFullscreen();
+  }
 }
