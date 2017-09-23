@@ -69,14 +69,13 @@ function stopVideo(evt) {
   lecteur.currentTime = 0; // remet le lecteur à 0
 }
 
-// // fonction plein écran, https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Using_full_screen_mode
+// // fonction plein écran
 function pleinEcran(evt) {
-  const pleinEcranConst = document.getElementById("lecteur");
-  if (pleinEcranConst.requestFullscreen) {
-    pleinEcranConst.requestFullscreen();
-  } else if (pleinEcranConst.mozRequestFullScreen) {
-    pleinEcranConst.mozRequestFullScreen();
-  } else if (pleinEcranConst.webkitRequestFullscreen) {
-    pleinEcranConst.webkitRequestFullscreen();
+  if (lecteur.requestFullscreen) {
+    lecteur.requestFullscreen();
+  } else if (lecteur.mozRequestFullScreen) {
+    lecteur.mozRequestFullScreen();
+  } else if (lecteur.webkitRequestFullscreen) {
+    lecteur.webkitRequestFullscreen();
   }
 }
